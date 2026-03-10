@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import MyIcon from './MyIcon';
 
@@ -36,21 +37,35 @@ export default function HardSkills({ ...rest }: HardSkillsProps) {
   const current = skills[index];
   const next = skills[(index + 1) % skills.length];
 
+  const items = [
+    { ...prev, position: 'left' },
+    { ...current, position: 'center' },
+    { ...next, position: 'right' },
+  ];
+
   return (
-    <div className="transition-all duration-300 ease-in-out" {...rest}>
-      <div className="flex items-center gap-4">
-        <span title={prev.name}>
-          <MyIcon icon={prev.icon} width={40} height={40} />
-        </span>
+    <div className="relative flex justify-center items-center h-80" {...rest}>
+      {items.map(item => (
+        <motion.div
+          key={item.name}
+          layout
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
+          className="absolute"
+          animate={{
+            x: item.position === 'left' ? -160 : item.position === 'right' ? 160 : 0,
 
-        <span title={current.name}>
-          <MyIcon icon={current.icon} width={64} height={64} />
-        </span>
+            scale: item.position === 'center' ? 1 : 0.6,
 
-        <span title={next.name}>
-          <MyIcon icon={next.icon} width={40} height={40} />
-        </span>
-      </div>
+            opacity: item.position === 'center' ? 1 : 0.4,
+          }}
+        >
+          <MyIcon
+            icon={item.icon}
+            width={item.position === 'center' ? 200 : 100}
+            height={item.position === 'center' ? 200 : 100}
+          />
+        </motion.div>
+      ))}
     </div>
   );
 }
