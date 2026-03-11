@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://1marcosaquino.github.io/Portfolio/sitemap.xml',
+    sitemap: 'https://portfolio-de-marcos.netlify.app/sitemap.xml',
   };
 }
