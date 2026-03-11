@@ -22,7 +22,7 @@ const skills = [
 
 interface HardSkillsProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export default function HardSkills({ ...rest }: HardSkillsProps) {
+export function HardSkills({ ...rest }: HardSkillsProps) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {

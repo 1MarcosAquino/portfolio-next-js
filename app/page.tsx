@@ -2,8 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import HardSkills from './components/HardSkills';
-import NavMenu from './components/NavMenu';
+import { HardSkills } from '../components/HardSkills';
 
 const config = {
   name: 'Marcos',
@@ -29,24 +28,8 @@ export default function Home() {
   const title = destacarPalavras(config.title, config.tools);
 
   return (
-    <>
-      {/* HEADER */}
-      <header className="fixed top-0 left-0 w-full bg-background shadow-sm z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xl md:text-2xl font-bold">
-            {config.name}
-          </motion.h2>
-
-          {/* Desktop Menu */}
-          <NavMenu />
-        </div>
-        {/* Mobile Menu */}
-      </header>
-
-      {/* HERO */}
+    <div className=" grid place-items-center h-screen">
       <section className="max-w-6xl mx-auto px-6 pt-32 pb-16 grid md:grid-cols-2 gap-10 items-center">
-        {/* Texto */}
-
         <motion.div variants={fadeUp} initial="hidden" animate="show">
           <h1 className="font-bold text-4xl sm:text-5xl leading-tight">
             {title.map((parte, index) =>
@@ -64,40 +47,37 @@ export default function Home() {
             Desenvolvo APIs, sistemas e aplicações web modernas usando PHP, Javascript e React.
           </p>
 
-          <motion.div className="mt-6 flex gap-4" whileHover={{ scale: 1.02 }}>
+          <div className="mt-8 flex gap-4">
             <Link
               href="/projetos"
-              className="bg-sky-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-sky-600 transition"
+              className="px-6 py-3 rounded-md text-gray-100 bg-sky-600 hover:bg-highlight hover:scale-105 transition"
             >
               Ver Projetos
             </Link>
 
-            <Link href="/contato" className="border px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+            <Link href="/contato" className="px-6 py-3 rounded-md text-gray-100 border hover:scale-105 transition">
               Contato
             </Link>
-          </motion.div>
+          </div>
         </motion.div>
 
-        {/* Foto */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           className="flex justify-center"
         >
-          {/* <Image src="/images/perfil.webp" width={380} height={380} alt="Foto Marcos Aquino" /> */}
-          <HardSkills />
+          <motion.section
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="max-w-6xl mx-auto px-6 pb-16"
+          >
+            <HardSkills />
+          </motion.section>
         </motion.div>
       </section>
-
-      {/* Skills */}
-      <motion.section
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="max-w-6xl mx-auto px-6 pb-16"
-      ></motion.section>
-    </>
+    </div>
   );
 }

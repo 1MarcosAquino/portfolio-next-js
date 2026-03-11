@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { Roboto } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 
 const roboto = Roboto({
@@ -32,20 +34,20 @@ export const metadata: Metadata = {
 
   authors: [{ name: 'Marcos Aquino' }],
 
-  metadataBase: new URL('https://1marcosaquino.github.io/Portfolio'),
+  metadataBase: new URL('https://portfolio-de-marcos.netlify.app'),
 
   alternates: {
-    canonical: '/Portfolio/',
+    canonical: '/',
   },
 
   openGraph: {
     title: 'Marcos Aquino | Desenvolvedor Full Stack',
     description: 'Portfólio com projetos de sites e soluções digitais.',
-    url: 'https://1marcosaquino.github.io/Portfolio/',
+    url: 'https://portfolio-de-marcos.netlify.app/',
     siteName: 'Marcos Aquino Portfolio',
     images: [
       {
-        url: '/perfil.webp',
+        url: '/images/perfil.webp',
         width: 1200,
         height: 630,
         alt: 'Marcos Aquino Desenvolvedor Full Stack',
@@ -81,17 +83,23 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Marcos Aquino',
-    url: 'https://1marcosaquino.github.io/Portfolio/',
+    url: 'https://portfolio-de-marcos.netlify.app/',
     jobTitle: 'Desenvolvedor Full Stack',
-    image: 'https://1marcosaquino.github.io/Portfolio/images/perfil.webp',
+    image: 'https://portfolio-de-marcos.netlify.app/images/perfil.webp',
     sameAs: ['https://github.com/1marcosaquino'],
     knowsAbout: ['JavaScript', 'React', 'Next.js', 'PHP', 'TypeScript', 'MySQL', 'APIs REST'],
   };
 
+  const Header = dynamic(() => import('@/components/Header').then(mod => mod.Header));
+
   return (
     <html lang="pt-BR">
-      <body className={roboto.className}>{children}</body>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      {/* HEADER */}
+      <body className={roboto.className}>
+        <Header title={schema.name} />
+        {children}
+      </body>
+      <Script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     </html>
   );
 }

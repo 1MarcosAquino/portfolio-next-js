@@ -10,7 +10,7 @@ type NavItem = {
 };
 
 const navmenu: NavItem[] = [
-  { text: 'Sobre mim', href: '/sobre_mim' },
+  { text: 'Sobre mim', href: '/sobre-mim' },
   { text: 'Projetos', href: '/projetos' },
   { text: 'Contato', href: '/contato' },
 ];
@@ -34,15 +34,16 @@ const mobileMenuAnimation = {
 
 function NavItemLink({ item }: { item: NavItem }) {
   return (
-    <motion.li whileHover={{ scale: 1.08 }}>
-      <Link href={item.href} className="font-semibold uppercase text-sm transition-colors hover:text-sky-500">
-        {item.text}
-      </Link>
-    </motion.li>
+    <Link
+      href={item.href}
+      className=" hover:scale-108 transition-colors duration-300 font-semibold uppercase text-sm  hover:text-sky-500"
+    >
+      {item.text}
+    </Link>
   );
 }
 
-export default function NavMenu() {
+export function NavMenu() {
   const [open, setOpen] = useState(false);
 
   const toggle = () => setOpen(prev => !prev);
