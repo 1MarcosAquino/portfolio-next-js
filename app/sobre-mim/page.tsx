@@ -8,7 +8,7 @@ function destacarPalavras(texto: string, palavras: string[]) {
 }
 
 const config = {
-  description: `Desenvolvedor com sólida base em PHP, atuando no desenvolvimento e manutenção de sistemas e plataformas como
+  antigo: `Desenvolvedor com sólida base em PHP, atuando no desenvolvimento e manutenção de sistemas e plataformas como
   WordPress e PrestaShop. Tenho experiência prática em todo o ciclo de vida de aplicações, desde a modelagem de
   bancos de dados MySQL até a construção de APIs REST. Atualmente, foco minha evolução técnica em JavaScript e
   TypeScript, aplicando esses conhecimentos para criar interfaces mais dinâmicas e códigos mais organizados. Busco
@@ -16,32 +16,8 @@ const config = {
 
   tools: ['WordPress', 'PrestaShop', 'PHP', 'MySQL', 'JavaScript', 'TypeScript', 'APIs REST'],
 
-  antigo: `Sou um desenvolvedor web com experiência em criar soluções personalizadas que atendem às necessidades específicas de cada cliente. Dominando um amplo conjunto de tecnologias, desde bancos de dados até frameworks front-end, construo aplicações escaláveis. Desenvolvi diversos projetos, otimizando processos e entregando resultados que superaram as expectativas dos clientes.`,
+  description: `Sou um desenvolvedor web com experiência em criar soluções personalizadas que atendem às necessidades específicas de cada cliente. Dominando um amplo conjunto de tecnologias, desde bancos de dados até frameworks front-end, construo aplicações escaláveis. Desenvolvi diversos projetos, otimizando processos e entregando resultados que superaram as expectativas dos clientes.`,
 };
-
-const jobs = [
-  {
-    icon: 'iconoir:www',
-    title: 'Desenvolvedor Web',
-    description: 'Desenvolvimento com PHP, MYSQL, HTML, CSS, JQuery e JavaScript.',
-  },
-  {
-    icon: 'icons8:services',
-    title: 'APIs sob medida',
-    description: 'Estrutura lógica clara, projetadas para escalar e funcionar com eficiência.',
-  },
-  {
-    icon: 'grommet-icons:system',
-    title: 'Sistemas sob medida',
-    description: 'Sistemas feitos para atender às necessidades do seu negócio e escalar conforme necessário.',
-  },
-  {
-    icon: 'carbon:dns-services',
-    title: 'Sites e Interfaces Web',
-    description:
-      'Sites, landing pages e lojas virtuais, alinhado à identidade da marca e implementação de novas funcionalidades.',
-  },
-];
 
 export default function SobreMim() {
   const description = destacarPalavras(config.description, config.tools);

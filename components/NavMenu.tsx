@@ -10,6 +10,7 @@ type NavItem = {
 };
 
 const navmenu: NavItem[] = [
+  { text: 'Início', href: '/' },
   { text: 'Sobre mim', href: '/sobre-mim' },
   { text: 'Projetos', href: '/projetos' },
   { text: 'Contato', href: '/contato' },

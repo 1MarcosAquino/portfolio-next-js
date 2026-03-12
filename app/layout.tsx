@@ -1,10 +1,11 @@
+import { Footer } from '@/components/Footer';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import { Roboto } from 'next/font/google';
+import { Nunito } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 
-const roboto = Roboto({
+const roboto = Nunito({
   subsets: ['latin'],
   weight: ['400', '700'],
   display: 'swap',
@@ -98,6 +99,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <Header title={schema.name} />
         {children}
+        <Footer />
       </body>
       <Script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     </html>
