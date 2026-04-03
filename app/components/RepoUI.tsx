@@ -1,42 +1,43 @@
 import MyIcon from './MyIcon';
 
-interface Repo {
-  id: number;
-  name: string;
-  description: string;
-  language: string[];
-  homepage: string | null;
-  html_url: string;
-  created_at: string | Date | number;
-  updated_at: string | Date | number;
-}
+type TRepo = {
+    id: number;
+    name: string;
+    description: string;
+    html_url: string;
+    homepage: null | string;
+    language: string[];
+    languages_url: string;
+    created_at: null | string;
+    updated_at: null | string;
+};
 
 type Tech = {
-  [key: string]: string;
+    [key: string]: string;
 };
 
 const skills: Tech = {
-  CSS: 'tabler:brand-css3',
-  JavaScript: 'tabler:brand-javascript',
-  HTML: 'icon-park-outline:html-five',
-  react: 'teenyicons:react-solid',
-  TypeScript: 'hugeicons:typescript-01',
-  nodejs: 'tabler:brand-nodejs',
-  mysql: 'simple-icons:mysql',
-  git: 'arcticons:git',
-  github: 'line-md:github-loop',
-  'github actions': 'devicon-plain:githubactions',
-  jquery: 'devicon-plain:jquery-wordmark',
-  php: 'bxl:php',
-  composer: 'simple-icons:composer',
+    CSS: 'tabler:brand-css3',
+    JavaScript: 'tabler:brand-javascript',
+    HTML: 'icon-park-outline:html-five',
+    react: 'teenyicons:react-solid',
+    TypeScript: 'hugeicons:typescript-01',
+    nodejs: 'tabler:brand-nodejs',
+    mysql: 'simple-icons:mysql',
+    git: 'arcticons:git',
+    github: 'line-md:github-loop',
+    'github actions': 'devicon-plain:githubactions',
+    jquery: 'devicon-plain:jquery-wordmark',
+    php: 'bxl:php',
+    composer: 'simple-icons:composer',
 };
 
-export const RepoUI = ({ repo }: { repo: Repo }) => {
-  const { name, description, html_url, homepage, language } = repo;
+export const RepoUI = ({ repo }: { repo: TRepo }) => {
+    const { name, description, html_url, homepage, language } = repo;
 
-  return (
-    <article
-      className="
+    return (
+        <article
+            className="
       group
       w-full
       max-w-sm
@@ -51,13 +52,13 @@ export const RepoUI = ({ repo }: { repo: Repo }) => {
       hover:shadow-2xl
       hover:-translate-y-1
     "
-    >
-      {/* IMAGE */}
-      <div className="relative overflow-hidden">
-        <img
-          src="/images/source-Code.webp"
-          alt="repo image"
-          className="
+        >
+            {/* IMAGE */}
+            <div className="relative overflow-hidden">
+                <img
+                    src="/images/source-Code.webp"
+                    alt="repo image"
+                    className="
           w-full
           h-40
           object-cover
@@ -65,44 +66,44 @@ export const RepoUI = ({ repo }: { repo: Repo }) => {
           duration-500
           group-hover:scale-110
         "
-        />
+                />
 
-        <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-      </div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+            </div>
 
-      {/* CONTENT */}
-      <div className="p-4 flex flex-col gap-3">
-        {/* TITLE */}
-        <h3
-          className="
+            {/* CONTENT */}
+            <div className="p-4 flex flex-col gap-3">
+                {/* TITLE */}
+                <h3
+                    className="
           text-lg
           font-bold
           tracking-wide
           text-white
           line-clamp-1
         "
-        >
-          {name}
-        </h3>
+                >
+                    {name}
+                </h3>
 
-        {/* DESCRIPTION */}
-        <p
-          className="
+                {/* DESCRIPTION */}
+                <p
+                    className="
           text-sm
           text-gray-300
           leading-relaxed
           line-clamp-3
         "
-        >
-          {description}
-        </p>
+                >
+                    {description}
+                </p>
 
-        {/* LANGUAGES */}
-        <div className="flex flex-wrap gap-2 pt-1">
-          {language.map(lang => (
-            <span
-              key={lang}
-              className="
+                {/* LANGUAGES */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                    {language.map(lang => (
+                        <span
+                            key={lang}
+                            className="
               flex
               items-center
               gap-1
@@ -118,20 +119,20 @@ export const RepoUI = ({ repo }: { repo: Repo }) => {
               transition
               hover:bg-sky-500/30
             "
-            >
-              <MyIcon icon={skills[lang]} width="14" height="14" />
-              {lang}
-            </span>
-          ))}
-        </div>
+                        >
+                            <MyIcon icon={skills[lang]} width="14" height="14" />
+                            {lang}
+                        </span>
+                    ))}
+                </div>
 
-        {/* ACTIONS */}
-        <div className="flex gap-2 pt-3">
-          {homepage && (
-            <a
-              href={homepage}
-              target="_blank"
-              className="
+                {/* ACTIONS */}
+                <div className="flex gap-2 pt-3">
+                    {homepage && (
+                        <a
+                            href={homepage}
+                            target="_blank"
+                            className="
               flex-1
               flex
               items-center
@@ -146,17 +147,17 @@ export const RepoUI = ({ repo }: { repo: Repo }) => {
               rounded-xl
               transition
             "
-            >
-              <MyIcon icon="hugeicons:link-forward" width="18" height="18" />
-              Demo
-            </a>
-          )}
+                        >
+                            <MyIcon icon="hugeicons:link-forward" width="18" height="18" />
+                            Demo
+                        </a>
+                    )}
 
-          <a
-            href={html_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
+                    <a
+                        href={html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="
             flex-1
             flex
             items-center
@@ -173,12 +174,12 @@ export const RepoUI = ({ repo }: { repo: Repo }) => {
             shadow
             hover:shadow-lg
           "
-          >
-            <MyIcon icon="line-md:github-loop" width="18" height="18" />
-            GitHub
-          </a>
-        </div>
-      </div>
-    </article>
-  );
+                    >
+                        <MyIcon icon="line-md:github-loop" width="18" height="18" />
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </article>
+    );
 };
