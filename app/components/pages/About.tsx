@@ -8,29 +8,27 @@ const config = {
   TypeScript, aplicando esses conhecimentos para criar interfaces mais dinâmicas e códigos mais organizados. Busco
   sempre o equilíbrio entre a entrega de regras de negócio e a performance técnica do sistema.`,
 
-    tools: ['WordPress', 'PrestaShop', 'PHP', 'MySQL', 'JavaScript', 'TypeScript', 'APIs REST'],
+    tools: ['PHP', 'MySQL', 'JavaScript', 'TypeScript', 'APIs REST'],
 
     description: `Sou um desenvolvedor web com experiência em criar soluções personalizadas que atendem às necessidades específicas de cada cliente. Dominando um amplo conjunto de tecnologias, desde bancos de dados até frameworks front-end, construo aplicações escaláveis. Desenvolvi diversos projetos, otimizando processos e entregando resultados que superaram as expectativas dos clientes.`,
 };
 
-export default function SobreMim() {
+export function About() {
     const description = highlightWord(config.description, config.tools);
 
     return (
-        <div className="bg-background grid place-items-center h-screen">
-            <Section title="Sobre mim" id="sobre_mim">
-                <p className="text-justify indent-14 tracking-wider text-xl">
-                    {description.map((parte, index) =>
-                        config.tools.some(palavra => palavra.toLowerCase() === parte.toLowerCase()) ? (
-                            <span key={index} className="text-sky-450">
-                                {parte}
-                            </span>
-                        ) : (
-                            <span key={index}>{parte}</span>
-                        )
-                    )}
-                </p>
-            </Section>
-        </div>
+        <Section title="Sobre mim" id="About">
+            <p className="text-foreground text-justify indent-14 tracking-wider text-xl">
+                {description.map((parte, index) =>
+                    config.tools.some(palavra => palavra.toLowerCase() === parte.toLowerCase()) ? (
+                        <span key={index} className="text-sky-450">
+                            {parte}
+                        </span>
+                    ) : (
+                        <span key={index}>{parte}</span>
+                    )
+                )}
+            </p>
+        </Section>
     );
 }
