@@ -41,8 +41,12 @@ const action = () => {
 };
 
 export function Contact() {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
         alert.info('Esse projeto está em desenvovimento');
+
+        if (timeout) {
+            clearTimeout(timeout);
+        }
     }, 4000);
     return (
         <>

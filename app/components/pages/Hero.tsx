@@ -46,14 +46,14 @@ export function Hero() {
 
                     <div className="mt-8 flex gap-4">
                         <Link
-                            href="#projetos"
+                            href="#Project"
                             className="px-6 py-3 rounded-md text-gray-100 bg-sky-600 hover:bg-highlight hover:scale-105 transition"
                         >
                             Ver Projetos
                         </Link>
 
                         <Link
-                            href="#contato"
+                            href="#Contact"
                             className="px-6 py-3 rounded-md text-foreground border hover:scale-105 transition"
                         >
                             Contato
